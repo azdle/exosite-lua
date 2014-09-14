@@ -18,7 +18,7 @@ dependancies (other than being run from https://webscript.io)
 local exosite = require 'exosite'
 
 -- or for webscript.io:
-local exosite = require 'azdle/exosite-lua/exosite-webscript.lua'
+local exosite = require 'Azdle/exosite-lua/exosite-webscript.lua'
 ```
 
 ### Create a Local RPC Client Instance
