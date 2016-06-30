@@ -32,7 +32,7 @@ local mt = {
 
 function exosite.rpc:call(call)
 	local request = json.stringify({
-		auth = {cik = self.cik},
+		auth = self.auth,
 		calls = {call}
 	})
 	
@@ -52,10 +52,12 @@ function exosite.rpc:call(call)
 	end
 end
 
-function exosite.rpc:new(tbl)
-	assert(type(tbl.cik) == "string" and #tbl.cik == 40)
+function exosite.rpc:new(auth)
+	assert((type(auth.cik) == "string" and #auth.cik == 40) or
+	       (type(auth.token) == "string" and #auth.token == 40))
 
-	local o = tbl
+	local o = {}
+	o.auth = auth
 	setmetatable(o, {__index = self})
 	return o
 end
